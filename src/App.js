@@ -38,11 +38,11 @@ class App extends Component {
           <AppHeader />
           <div className={styles.main}>
             <main className={styles.mainInner}>
-              <Route path="/" component={IndexPage} />
               {/** 
-                When navigating to /about, the IndexPage is still displayed. 
-                A <Route> path is by default matching /^{path}/
+                'exact' ensures that a Route is only resolves for an exact match. 
+                Here '/' won't render on '/about' anymore. 
               */}
+              <Route path="/" exact component={IndexPage} />
               <Route path="/about" component={AboutPage} />
             </main>
           </div>
