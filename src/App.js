@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import AppHeader from "./components/AppHeader";
-
+import IndexPage from "./pages/IndexPage";
 /**
  * creat-react-app default webpack configuration handles css files in two ways:
  *  - importing "<filepath>.css" will add it's content to the global css file, whithout any tranformation
@@ -22,18 +23,24 @@ import styles from "./app.module.css";
 class App extends Component {
   render() {
     return (
-      <>
-        {/** 
-          A component must render a single node (Single React element, array of elements, or a primitive type).
-          React provides a <React.Fragment> (or <>) component as wrapping element, to be able
-          to return multiple elements without wrapping them in an additional DOM node.
-          See https://reactjs.org/docs/fragments.html
-        */}
-        <AppHeader />
-        <div className={styles.main}>
-          <main className={styles.mainInner}>Hello React</main>
-        </div>
-      </>
+      <Router>
+        <>
+          {/** 
+            A component must render a single node (Single React element, array of elements, or a primitive type).
+            React provides a <React.Fragment> (or <>) component as wrapping element, to be able
+            to return multiple elements without wrapping them in an additional DOM node.
+            See https://reactjs.org/docs/fragments.html.
+
+            <Router> only accepts a single children, so we have to use a Fragment too 
+          */}
+          <AppHeader />
+          <div className={styles.main}>
+            <main className={styles.mainInner}>
+              <Route path="/" component={IndexPage} />
+            </main>
+          </div>
+        </>
+      </Router>
     );
   }
 }
