@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import AppHeader from "./components/AppHeader";
 import IndexPage from "./pages/IndexPage";
+import AboutPage from "./pages/AboutPage";
+
 /**
  * creat-react-app default webpack configuration handles css files in two ways:
  *  - importing "<filepath>.css" will add it's content to the global css file, whithout any tranformation
@@ -37,6 +39,11 @@ class App extends Component {
           <div className={styles.main}>
             <main className={styles.mainInner}>
               <Route path="/" component={IndexPage} />
+              {/** 
+                When navigating to /about, the IndexPage is still displayed. 
+                A <Route> path is by default matching /^{path}/
+              */}
+              <Route path="/about" component={AboutPage} />
             </main>
           </div>
         </>
