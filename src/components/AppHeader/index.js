@@ -10,6 +10,9 @@ const AppHeader = props => (
     <Menu.Item as={Link} to="/about">
       About
     </Menu.Item>
+    <Menu.Item as={Link} to="/shows">
+      TV Shows
+    </Menu.Item>
     <Menu.Item position="right">
       <Clock />
     </Menu.Item>

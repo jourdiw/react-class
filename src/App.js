@@ -4,9 +4,10 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import AppHeader from "./components/AppHeader";
 import IndexPage from "./pages/IndexPage";
 import AboutPage from "./pages/AboutPage";
+import ShowsPage from "./pages/ShowsPage";
 
 /**
- * creat-react-app default webpack configuration handles css files in two ways:
+ * create-react-app default webpack configuration handles css files in two ways:
  *  - importing "<filepath>.css" will add it's content to the global css file, whithout any tranformation
  *  - importing "<filepath>.module.css" will handle it as a 'css module':
  *    (https://facebook.github.io/create-react-app/docs/adding-a-css-modules-stylesheet)
@@ -44,6 +45,7 @@ class App extends Component {
               */}
               <Route path="/" exact component={IndexPage} />
               <Route path="/about" component={AboutPage} />
+              <Route path="/shows" component={ShowsPage} />
             </main>
           </div>
         </>
