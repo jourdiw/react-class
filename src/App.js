@@ -1,13 +1,10 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import { connect } from "react-redux";
+
+import Routes from "./routes";
 
 import AppHeader from "./components/AppHeader";
-import IndexPage from "./pages/IndexPage";
-import AboutPage from "./pages/AboutPage";
-import HocPage from "./pages/Hoc";
-import ShowsPage from "./pages/ShowsPage";
-import ShowPage from "./pages/ShowPage";
-
 import Theme from "./components/Theme";
 
 /**
@@ -26,9 +23,9 @@ import Theme from "./components/Theme";
 import "semantic-ui-css/semantic.min.css";
 import "./app.css";
 import styles from "./app.module.css";
-
 class App extends Component {
   render() {
+    const { title } = this.props;
     return (
       <Router>
         <Theme.Provider value={{ mainColor: "#333", altColor: "pink" }}>
@@ -40,18 +37,10 @@ class App extends Component {
 
             <Router> only accepts a single children, so we have to use a Fragment too 
           */}
-          <AppHeader />
+          <AppHeader title={title} />
           <div className={styles.main}>
             <main className={styles.mainInner}>
-              {/** 
-                'exact' ensures that a Route is only resolves for an exact match. 
-                Here '/' won't render on '/about' anymore. 
-              */}
-              <Route path="/" exact component={IndexPage} />
-              <Route path="/about" component={AboutPage} />
-              <Route path="/hoc" component={HocPage} />
-              <Route path="/shows" component={ShowsPage} />
-              <Route path="/show/:id" component={ShowPage} />
+              <Routes />
             </main>
           </div>
         </Theme.Provider>
@@ -59,5 +48,10 @@ class App extends Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  title: state.appTitle
+});
 
-export default App;
+const ConnectedApp = connect(mapStateToProps)(App);
+
+export default ConnectedApp;

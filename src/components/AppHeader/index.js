@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 
 import Clock from "../Clock";
 
-const AppHeader = props => (
+const AppHeader = ({ title, ...props }) => (
   <Menu fixed="top" inverted {...props}>
     <Menu.Item as={Link} to="/">
-      React Class: 1
+      {title || "React Class: 1"}
     </Menu.Item>
     <Menu.Item as={Link} to="/about">
       About
