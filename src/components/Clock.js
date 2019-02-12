@@ -1,4 +1,6 @@
-import { Component } from "react";
+import React, { Component } from "react";
+
+import Theme from "./Theme";
 
 class Clock extends Component {
   // initial state definition
@@ -37,8 +39,15 @@ class Clock extends Component {
   render() {
     const { date } = this.state;
 
-    // we can just return a string, returning a dom element is not required
-    return date.toLocaleTimeString();
+    return (
+      <Theme.Consumer>
+        {theme => (
+          <span style={{ color: theme.altColor }}>
+            {date.toLocaleTimeString()}
+          </span>
+        )}
+      </Theme.Consumer>
+    );
   }
 }
 
