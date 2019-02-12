@@ -5,17 +5,19 @@ import { connect } from "react-redux";
 
 import { updateTitle } from "../actions";
 
-const AboutPage = ({ handleTitleChange }) => (
+const AboutPage = ({ title, handleTitleChange }) => (
   <>
     <Header>About this site</Header>
-    <input onChange={e => handleTitleChange(e.target.value)} />
+    <input value={title} onChange={e => handleTitleChange(e.target.value)} />
   </>
 );
 AboutPage.defaultProps = {
   handleTitleChange: a => a
 };
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  title: state.appTitle
+});
 
 const mapDispatchToProps = dispatch => ({
   handleTitleChange: value => dispatch(updateTitle(value))
