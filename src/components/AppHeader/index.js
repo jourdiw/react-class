@@ -6,9 +6,14 @@ import Clock from "../Clock";
 
 const AppHeader = props => (
   <Menu fixed="top" inverted {...props}>
-    <Menu.Item>React Class: 1</Menu.Item>
+    <Menu.Item as={Link} to="/">
+      React Class: 1
+    </Menu.Item>
     <Menu.Item as={Link} to="/about">
       About
+    </Menu.Item>
+    <Menu.Item as={Link} to="/hoc">
+      HOC pattern
     </Menu.Item>
     <Menu.Item as={Link} to="/shows">
       TV Shows
