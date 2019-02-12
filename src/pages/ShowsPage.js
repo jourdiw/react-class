@@ -14,7 +14,13 @@ class TvShows extends Component {
 
   // execute the search once mounted on the dom, and 'fetch' API is available
   componentDidMount = () => {
-    // this.doSearch(); do not execute search on mount anymore
+    const { location } = this.props; // react-router injects browsers "window.location" API
+    const matches = location.search.match(/^\?q=(.*)/); // lookup for a query in the url
+    if (matches) {
+      const query = matches[1];
+      this.setState({ query });
+      this.doSearch(query);
+    }
   };
 
   handleQueryChange = e => {
@@ -22,18 +28,16 @@ class TvShows extends Component {
     const queryValue = e.target.value;
 
     history.replace(`?q=${queryValue}`);
-    // execute search only if there is at least a letter
-    if (queryValue.length > 0) {
-      this.doSearch(queryValue);
-      this.setState({ query: queryValue });
-    } else {
-      // else reset search
-      this.setState(initialState);
-    }
+    this.doSearch(queryValue);
+    this.setState({ query: queryValue });
   };
 
   // query the api using fetch and old school promises.
   doSearch = query => {
+    if (query.length === 0) {
+      this.setState(initialState);
+      return;
+    }
     this.setState({ searching: true });
     fetch(`http://api.tvmaze.com/search/shows?q=${query}`)
       .then(res => res.json()) // extracting json from a reponse is another promise
