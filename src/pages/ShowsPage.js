@@ -18,8 +18,10 @@ class TvShows extends Component {
   };
 
   handleQueryChange = e => {
+    const { history } = this.props; // react-router injects the browser's "history" API into the DOM
     const queryValue = e.target.value;
 
+    history.replace(`?q=${queryValue}`);
     // execute search only if there is at least a letter
     if (queryValue.length > 0) {
       this.doSearch(queryValue);
