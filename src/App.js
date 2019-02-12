@@ -5,6 +5,7 @@ import AppHeader from "./components/AppHeader";
 import IndexPage from "./pages/IndexPage";
 import AboutPage from "./pages/AboutPage";
 import ShowsPage from "./pages/ShowsPage";
+import ShowPage from "./pages/ShowPage";
 
 /**
  * create-react-app default webpack configuration handles css files in two ways:
@@ -46,6 +47,7 @@ class App extends Component {
               <Route path="/" exact component={IndexPage} />
               <Route path="/about" component={AboutPage} />
               <Route path="/shows" component={ShowsPage} />
+              <Route path="/show/:id" component={ShowPage} />
             </main>
           </div>
         </>
