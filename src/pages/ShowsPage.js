@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import { List as ShowList } from "../components/Shows";
+
 class BatmanShows extends Component {
   state = {
     searching: true,
@@ -26,6 +28,10 @@ class BatmanShows extends Component {
 
   render() {
     const { searching, results } = this.state;
+
+    // transform [{score, show}] into [show]
+    const shows = results.map(r => r.show);
+
     return (
       <div>
         <h1>Batman shows</h1>
@@ -35,15 +41,7 @@ class BatmanShows extends Component {
         !searching && results.length > 0 && (
           <div>
             <p>Found at least {results.length} Batman shows</p>
-            <ul>
-              {results.map(result => (
-                /** When returning an array of elements, react needs a unique identifier for each occurence in order
-                 * to have a stable reference to it, for further updates (a do some optimisations on next renders).
-                 * /!\ => Never use an array index as a key.
-                 * See https://reactjs.org/docs/lists-and-keys.html */
-                <li key={result.show.id}>{result.show.name}</li>
-              ))}
-            </ul>
+            <ShowList shows={shows} />
           </div>
         )}
       </div>
