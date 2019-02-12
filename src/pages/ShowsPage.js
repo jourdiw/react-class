@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Header, Input } from "semantic-ui-react";
 
 import { List as ShowList } from "../components/Shows";
 
@@ -58,10 +59,11 @@ class TvShows extends Component {
 
     return (
       <div>
-        <h1>Search Tv Shows</h1>
+        <Header>Search Tv Shows</Header>
         <p>
-          <input
+          <Input
             type="search"
+            icon="search"
             value={query}
             onChange={this.handleQueryChange}
           />
