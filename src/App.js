@@ -20,9 +20,18 @@ import Theme from "./components/Theme";
  *  (relative to current location if starting with . or .. , in node_modules elseway)
  */
 
+
 import "semantic-ui-css/semantic.min.css";
 import "./app.css";
 import styles from "./app.module.css";
+
+
+const mapStateToProps = state => ({
+  title: state.config.appTitle,
+  displayClock: state.config.displayClock
+});
+
+
 class App extends Component {
   render() {
     const { title, displayClock } = this.props;
@@ -49,10 +58,7 @@ class App extends Component {
     );
   }
 }
-const mapStateToProps = state => ({
-  title: state.appTitle,
-  displayClock: state.displayClock
-});
+
 
 const ConnectedApp = connect(mapStateToProps)(App);
 

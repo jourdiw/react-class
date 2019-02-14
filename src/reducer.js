@@ -1,6 +1,8 @@
 import { UPDATE_TITLE, DISPLAY_CLOCK } from "./actions";
+import showsReducer from './modules/shows/reducer'
+import { combineReducers } from 'redux'
 
-const appReducer = (state = {}, action) => {
+const configReducer = (state = {}, action) => {
   switch (action.type) {
     case UPDATE_TITLE:
       return { ...state, appTitle: action.payload };
@@ -10,5 +12,10 @@ const appReducer = (state = {}, action) => {
       return state;
   }
 };
+
+const appReducer = combineReducers({
+  shows: showsReducer,
+  config: configReducer
+})
 
 export default appReducer;

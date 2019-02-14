@@ -4,8 +4,9 @@ import { Route } from "react-router-dom";
 import IndexPage from "./pages/IndexPage";
 import AboutPage from "./pages/AboutPage";
 import HocPage from "./pages/Hoc";
-import ShowsPage from "./pages/ShowsPage";
+// import ShowsPage from "./pages/ShowsPage";
 import ShowPage from "./pages/ShowPage";
+import ShowsRoute from './modules/shows/routes';
 
 export default () => (
   <>
@@ -16,7 +17,7 @@ export default () => (
     <Route path="/" exact component={IndexPage} />
     <Route path="/about" component={AboutPage} />
     <Route path="/hoc" component={HocPage} />
-    <Route path="/shows" component={ShowsPage} />
+    <ShowsRoute />
     <Route path="/show/:id" component={ShowPage} />
   </>
 );
