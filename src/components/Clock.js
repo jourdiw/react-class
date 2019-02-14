@@ -5,7 +5,8 @@ import Theme from "./Theme";
 class Clock extends Component {
   // initial state definition
   state = {
-    date: new Date()
+    date: new Date(),
+    hide: false
   };
 
   // after first render, start the timer and store a reference to it to stop it if needed
@@ -42,7 +43,7 @@ class Clock extends Component {
     return (
       <Theme.Consumer>
         {theme => (
-          <span style={{ color: theme.altColor }}>
+          <span style={{ color: theme.altColor }} id="clock">
             {date.toLocaleTimeString()}
           </span>
         )}

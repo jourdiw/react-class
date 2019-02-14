@@ -3,12 +3,18 @@ import React from "react";
 import { Header } from "semantic-ui-react";
 import { connect } from "react-redux";
 
-import { updateTitle } from "../actions";
+import { updateTitle, updateClockDisplay } from "../actions";
 
-const AboutPage = ({ title, handleTitleChange }) => (
+const AboutPage = ({ title, handleTitleChange, handleClockDisplay }) => (
   <>
     <Header>About this site</Header>
+    <p>
     <input value={title} onChange={e => handleTitleChange(e.target.value)} />
+    </p>
+    <label>
+      Display clock? {" "}<input type="checkbox" onChange={(e) => handleClockDisplay(e.target.checked)} />
+
+    </label>
   </>
 );
 AboutPage.defaultProps = {
@@ -16,11 +22,13 @@ AboutPage.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  title: state.appTitle
+  title: state.appTitle,
+  displayClock: state.displayClock
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleTitleChange: value => dispatch(updateTitle(value))
+  handleTitleChange: value => dispatch(updateTitle(value)),
+  handleClockDisplay: value => dispatch(updateClockDisplay(value))
 });
 
 export default connect(
