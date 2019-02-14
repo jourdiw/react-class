@@ -12,9 +12,6 @@ const AppHeader = ({ title, ...props }) => (
     <Menu.Item as={Link} to="/about">
       About
     </Menu.Item>
-    <Menu.Item as={Link} to="/hoc">
-      HOC pattern
-    </Menu.Item>
     <Menu.Item as={Link} to="/shows">
       TV Shows
     </Menu.Item>

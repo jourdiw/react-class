@@ -29,7 +29,7 @@ class App extends Component {
     console.log('displayClock', displayClock)
     return (
       <Router>
-        <Theme.Provider value={{ mainColor: "#333", altColor: "pink" }}>
+        <>
           {/** 
             A component must render a single node (Single React element, array of elements, or a primitive type).
             React provides a <React.Fragment> (or <>) component as wrapping element, to be able
@@ -44,7 +44,7 @@ class App extends Component {
               <Routes />
             </main>
           </div>
-        </Theme.Provider>
+        </>
       </Router>
     );
   }
